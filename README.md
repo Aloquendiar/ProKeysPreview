@@ -1,5 +1,6 @@
 # Pro Keys Preview
 A VST3 visualiser for Rock Band 3 Pro Keys charts. Compatible with REAPER.
+<img width="743" height="556" alt="image" src="https://github.com/user-attachments/assets/0c72fcd2-d869-4e75-942b-5c05710639a9" />
 
 ## Usage
 - Download and copy the ProKeysPreview.vst3 folder to `C:\Program Files\Common Files\VST3` or wherever REAPER looks for your VST3 files
