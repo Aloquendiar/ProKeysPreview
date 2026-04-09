@@ -3,11 +3,14 @@ name: CI
 on:
   push:
     branches: ["main"]
+    tags: ["v*"]
   pull_request:
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     strategy:
       fail-fast: false
       matrix:
@@ -99,7 +102,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ProKeysPreview-Windows-VST3
-          path: Builds/VisualStudio2026/x64/Release/VST3/ProKeysPreview.vst3
+          path: Builds/VisualStudio2026/x64/Release/VST3
           if-no-files-found: warn
 
       - name: Upload VST3 artifact (macOS)
@@ -107,7 +110,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ProKeysPreview-macOS-VST3
-          path: Builds/MacOSX/build/Release/ProKeysPreview.vst3
+          path: Builds/MacOSX/build/Release
           if-no-files-found: warn
 
       - name: Upload VST3 artifact (Linux)
@@ -115,5 +118,23 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ProKeysPreview-Linux-VST3
-          path: Builds/LinuxMakefile/build/ProKeysPreview.vst3
+          path: Builds/LinuxMakefile/build
           if-no-files-found: warn
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            ProKeysPreview-Windows-VST3/**
+            ProKeysPreview-macOS-VST3/**
+            ProKeysPreview-Linux-VST3/**
