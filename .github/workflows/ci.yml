@@ -94,12 +94,26 @@ jobs:
         run: |
           make -C Builds/LinuxMakefile CONFIG=Release
 
-      - name: Upload VST3 artifact
+      - name: Upload VST3 artifact (Windows)
+        if: runner.os == 'Windows'
         uses: actions/upload-artifact@v4
         with:
-          name: ProKeysPreview-${{ runner.os }}-VST3
-          path: |
-            Builds/**/Release/**/*.vst3
-            Builds/**/build/Release/**/*.vst3
-            Builds/**/build/**/*.vst3
+          name: ProKeysPreview-Windows-VST3
+          path: Builds/VisualStudio2026/x64/Release/VST3/ProKeysPreview.vst3
+          if-no-files-found: warn
+
+      - name: Upload VST3 artifact (macOS)
+        if: runner.os == 'macOS'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ProKeysPreview-macOS-VST3
+          path: Builds/MacOSX/build/Release/ProKeysPreview.vst3
+          if-no-files-found: warn
+
+      - name: Upload VST3 artifact (Linux)
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ProKeysPreview-Linux-VST3
+          path: Builds/LinuxMakefile/build/ProKeysPreview.vst3
           if-no-files-found: warn
