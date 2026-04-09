@@ -1,8 +1,9 @@
 # Pro Keys Preview
-A VST3 visualiser for Rock Band 3 Pro Keys charts. Compatible with REAPER.
+A VST3 visualiser for Rock Band 3 Pro Keys charts in REAPER.
 <img width="743" height="556" alt="image" src="https://github.com/user-attachments/assets/0c72fcd2-d869-4e75-942b-5c05710639a9" />
 
 Windows, Linux and MacOS versions are available. The Linux and MacOS versions haven't been tested, please create an issue if you run into problems.
+The plugin was created and tested using REAPER 7. When using older versions, your mileage may vary.
 
 ## Installation
 - Download and copy the ProKeysPreview.vst3 folder to wherever REAPER looks for your VST3 plugins.
