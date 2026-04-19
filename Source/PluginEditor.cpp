@@ -1068,12 +1068,12 @@ void ProKeysPreviewAudioProcessorEditor::paint(juce::Graphics& g)
     {
         if (!isPitchBlackKey(pitch)) continue;
         const float kx = pitchLaneX[pitch - displayPitchMin];
-        g.setColour(pitchActive[pitch] ? juce::Colours::white : juce::Colour(0xff282828).interpolatedWith(getZoneColour(pitch), 0.3f));
+        g.setColour(pitchActive[pitch] ? juce::Colours::white : juce::Colour(0xff282828));
         fillWarpedRectPath(kx + 0.5f, keyboardTop, blackKeyLaneWidth - 1.0f, blackKeyH);
     }
 
-    if (leftEdgePitch  >= 0) { g.setColour(pitchActive[leftEdgePitch] ? juce::Colours::white : juce::Colour(0xff282828).interpolatedWith(getZoneColour(leftEdgePitch),  0.3f)); fillWarpedRectPath(leftEdgeX  + 0.5f, keyboardTop, blackKeyLaneWidth - 1.0f, blackKeyH); }
-    if (rightEdgePitch >= 0) { g.setColour(pitchActive[rightEdgePitch] ? juce::Colours::white : juce::Colour(0xff282828).interpolatedWith(getZoneColour(rightEdgePitch), 0.3f)); fillWarpedRectPath(rightEdgeX + 0.5f, keyboardTop, blackKeyLaneWidth - 1.0f, blackKeyH); }
+    if (leftEdgePitch  >= 0) { g.setColour(pitchActive[leftEdgePitch] ? juce::Colours::white : juce::Colour(0xff282828)); fillWarpedRectPath(leftEdgeX  + 0.5f, keyboardTop, blackKeyLaneWidth - 1.0f, blackKeyH); }
+    if (rightEdgePitch >= 0) { g.setColour(pitchActive[rightEdgePitch] ? juce::Colours::white : juce::Colour(0xff282828)); fillWarpedRectPath(rightEdgeX + 0.5f, keyboardTop, blackKeyLaneWidth - 1.0f, blackKeyH); }
 
     // Thin hit line
     g.setColour(juce::Colours::white.withAlpha(0.4f));
