@@ -618,7 +618,7 @@ void ProKeysPreviewAudioProcessorEditor::paint(juce::Graphics& g)
                     float stripW = (blackKeyLaneWidth * 0.5f) / steps;
                     float ratio = 1.0f - (float)s / steps;
                     float gradAlpha = 0.6f * ratio * std::sqrt(ratio);
-                    juce::Colour glowColour = zone.colour.darker().interpolatedWith(juce::Colours::white, 0.5f * ratio);
+                    juce::Colour glowColour = zone.colour.darker().darker().interpolatedWith(juce::Colours::white, 0.3f * ratio);
                     g.setColour(glowColour.withAlpha(gradAlpha));
                     fillWarpedRectPath(pitchLaneX[pitch - displayPitchMin] + stripW * s, highwayTop, stripW, activeLaneHeight);
                     fillWarpedRectPath(pitchLaneX[pitch - displayPitchMin] + blackKeyLaneWidth - stripW * (s + 1), highwayTop, stripW, activeLaneHeight);
@@ -633,7 +633,7 @@ void ProKeysPreviewAudioProcessorEditor::paint(juce::Graphics& g)
                     float stripW = (blackKeyLaneWidth * 0.5f) / steps;
                     float ratio = 1.0f - (float)s / steps;
                     float gradAlpha = 0.6f * ratio * std::sqrt(ratio);
-                    juce::Colour glowColour = zone.colour.darker().interpolatedWith(juce::Colours::white, 0.5f * ratio);
+                    juce::Colour glowColour = zone.colour.darker().darker().interpolatedWith(juce::Colours::white, 0.3f * ratio);
                     g.setColour(glowColour.withAlpha(gradAlpha));
                     fillWarpedRectPath(leftEdgeX + stripW * s, highwayTop, stripW, activeLaneHeight);
                     fillWarpedRectPath(leftEdgeX + blackKeyLaneWidth - stripW * (s + 1), highwayTop, stripW, activeLaneHeight);
@@ -646,7 +646,7 @@ void ProKeysPreviewAudioProcessorEditor::paint(juce::Graphics& g)
                     float stripW = (blackKeyLaneWidth * 0.5f) / steps;
                     float ratio = 1.0f - (float)s / steps;
                     float gradAlpha = 0.6f * ratio * std::sqrt(ratio);
-                    juce::Colour glowColour = zone.colour.darker().interpolatedWith(juce::Colours::white, 0.5f * ratio);
+                    juce::Colour glowColour = zone.colour.darker().darker().interpolatedWith(juce::Colours::white, 0.3f * ratio);
                     g.setColour(glowColour.withAlpha(gradAlpha));
                     fillWarpedRectPath(rightEdgeX + stripW * s, highwayTop, stripW, activeLaneHeight);
                     fillWarpedRectPath(rightEdgeX + blackKeyLaneWidth - stripW * (s + 1), highwayTop, stripW, activeLaneHeight);
@@ -1068,12 +1068,12 @@ void ProKeysPreviewAudioProcessorEditor::paint(juce::Graphics& g)
     {
         if (!isPitchBlackKey(pitch)) continue;
         const float kx = pitchLaneX[pitch - displayPitchMin];
-        g.setColour(pitchActive[pitch] ? juce::Colours::white : getZoneColour(pitch).darker());
+        g.setColour(pitchActive[pitch] ? juce::Colours::white : getZoneColour(pitch).darker().darker());
         fillWarpedRectPath(kx + 0.5f, keyboardTop, blackKeyLaneWidth - 1.0f, blackKeyH);
     }
 
-    if (leftEdgePitch  >= 0) { g.setColour(pitchActive[leftEdgePitch] ? juce::Colours::white : getZoneColour(leftEdgePitch).darker()); fillWarpedRectPath(leftEdgeX  + 0.5f, keyboardTop, blackKeyLaneWidth - 1.0f, blackKeyH); }
-    if (rightEdgePitch >= 0) { g.setColour(pitchActive[rightEdgePitch] ? juce::Colours::white : getZoneColour(rightEdgePitch).darker()); fillWarpedRectPath(rightEdgeX + 0.5f, keyboardTop, blackKeyLaneWidth - 1.0f, blackKeyH); }
+    if (leftEdgePitch  >= 0) { g.setColour(pitchActive[leftEdgePitch] ? juce::Colours::white : getZoneColour(leftEdgePitch).darker().darker()); fillWarpedRectPath(leftEdgeX  + 0.5f, keyboardTop, blackKeyLaneWidth - 1.0f, blackKeyH); }
+    if (rightEdgePitch >= 0) { g.setColour(pitchActive[rightEdgePitch] ? juce::Colours::white : getZoneColour(rightEdgePitch).darker().darker()); fillWarpedRectPath(rightEdgeX + 0.5f, keyboardTop, blackKeyLaneWidth - 1.0f, blackKeyH); }
 
     // Thin hit line
     g.setColour(juce::Colours::white.withAlpha(0.4f));
