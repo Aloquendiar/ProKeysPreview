@@ -618,7 +618,7 @@ void ProKeysPreviewAudioProcessorEditor::paint(juce::Graphics& g)
                     float stripW = (blackKeyLaneWidth * 0.5f) / steps;
                     float ratio = 1.0f - (float)s / steps;
                     float gradAlpha = 0.6f * ratio * std::sqrt(ratio);
-                    juce::Colour glowColour = zone.colour.interpolatedWith(juce::Colours::white, 0.5f * ratio);
+                    juce::Colour glowColour = juce::Colours::black.interpolatedWith(juce::Colours::white, 0.5f * ratio);
                     g.setColour(glowColour.withAlpha(gradAlpha));
                     fillWarpedRectPath(pitchLaneX[pitch - displayPitchMin] + stripW * s, highwayTop, stripW, activeLaneHeight);
                     fillWarpedRectPath(pitchLaneX[pitch - displayPitchMin] + blackKeyLaneWidth - stripW * (s + 1), highwayTop, stripW, activeLaneHeight);
@@ -633,7 +633,7 @@ void ProKeysPreviewAudioProcessorEditor::paint(juce::Graphics& g)
                     float stripW = (blackKeyLaneWidth * 0.5f) / steps;
                     float ratio = 1.0f - (float)s / steps;
                     float gradAlpha = 0.6f * ratio * std::sqrt(ratio);
-                    juce::Colour glowColour = zone.colour.interpolatedWith(juce::Colours::white, 0.5f * ratio);
+                    juce::Colour glowColour = juce::Colours::black.interpolatedWith(juce::Colours::white, 0.5f * ratio);
                     g.setColour(glowColour.withAlpha(gradAlpha));
                     fillWarpedRectPath(leftEdgeX + stripW * s, highwayTop, stripW, activeLaneHeight);
                     fillWarpedRectPath(leftEdgeX + blackKeyLaneWidth - stripW * (s + 1), highwayTop, stripW, activeLaneHeight);
@@ -646,7 +646,7 @@ void ProKeysPreviewAudioProcessorEditor::paint(juce::Graphics& g)
                     float stripW = (blackKeyLaneWidth * 0.5f) / steps;
                     float ratio = 1.0f - (float)s / steps;
                     float gradAlpha = 0.6f * ratio * std::sqrt(ratio);
-                    juce::Colour glowColour = zone.colour.interpolatedWith(juce::Colours::white, 0.5f * ratio);
+                    juce::Colour glowColour = juce::Colours::black.interpolatedWith(juce::Colours::white, 0.5f * ratio);
                     g.setColour(glowColour.withAlpha(gradAlpha));
                     fillWarpedRectPath(rightEdgeX + stripW * s, highwayTop, stripW, activeLaneHeight);
                     fillWarpedRectPath(rightEdgeX + blackKeyLaneWidth - stripW * (s + 1), highwayTop, stripW, activeLaneHeight);
